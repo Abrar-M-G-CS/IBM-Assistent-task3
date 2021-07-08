@@ -1,0 +1,406 @@
+{
+  "intents": [
+    {
+      "intent": "data",
+      "examples": [
+        {
+          "text": "C++"
+        },
+        {
+          "text": "c plus plus"
+        },
+        {
+          "text": "what is c++"
+        },
+        {
+          "text": "what is the best language for data structure?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "greeting",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hey"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "sup"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Html",
+      "examples": [
+        {
+          "text": "HTML"
+        },
+        {
+          "text": "i want to learn html"
+        },
+        {
+          "text": "what is HTML?"
+        },
+        {
+          "text": "what is the logo of html ?"
+        },
+        {
+          "text": "where to use html"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "IDE",
+      "examples": [
+        {
+          "text": "IDE"
+        },
+        {
+          "text": "Integrated development environment"
+        },
+        {
+          "text": "what is an ide"
+        },
+        {
+          "text": "what is an ide?"
+        },
+        {
+          "text": "what program should i use ?"
+        },
+        {
+          "text": "what type of IDE can i use?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "java",
+      "examples": [
+        {
+          "text": "java"
+        },
+        {
+          "text": "java?"
+        },
+        {
+          "text": "what is java?"
+        },
+        {
+          "text": "what is java for?"
+        },
+        {
+          "text": "where can we use java?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "python",
+      "examples": [
+        {
+          "text": "python"
+        },
+        {
+          "text": "what is python?"
+        },
+        {
+          "text": "what is python use in ?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_5_1625768428704",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "ide",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "here are some resources "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": "https://www.veracode.com/security/integrated-development-environment"
+                }
+              }
+            },
+            "message_to_user": "types of IDE "
+          }
+        ]
+      },
+      "conditions": "#IDE",
+      "dialog_node": "node_1_1625769937367",
+      "previous_sibling": "node_1_1625770471738"
+    },
+    {
+      "type": "standard",
+      "title": "java",
+      "output": {
+        "generic": [
+          {
+            "title": "Java logo",
+            "source": "https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png",
+            "description": "",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "Java is an object-oriented programming language that produces software for multiple platforms."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": "https://www.w3schools.com/java/"
+                }
+              }
+            },
+            "message_to_user": "click here if you want to learn more about java!"
+          }
+        ]
+      },
+      "conditions": "#java",
+      "dialog_node": "node_1_1625770471738",
+      "previous_sibling": "node_6_1625770782309"
+    },
+    {
+      "type": "standard",
+      "title": "greeting",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi there , ask me anything !"
+              },
+              {
+                "text": "Hello, Welcome"
+              },
+              {
+                "text": "Ask me! "
+              },
+              {
+                "text": "How can i help you ? "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#greeting",
+      "dialog_node": "node_5_1625768428704",
+      "previous_sibling": "node_1_1625769937367"
+    },
+    {
+      "type": "standard",
+      "title": "python",
+      "output": {
+        "generic": [
+          {
+            "title": "Python logo",
+            "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "Python is a general-purpose programming language, so it can be used for many things. Python is used for web development, AI, machine learning, operating systems, mobile application development, and video games"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": "https://www.w3schools.com/python/"
+                }
+              }
+            },
+            "message_to_user": "click here to learn python !"
+          }
+        ]
+      },
+      "conditions": "#python",
+      "dialog_node": "node_6_1625770782309",
+      "previous_sibling": "node_6_1625771201734"
+    },
+    {
+      "type": "standard",
+      "title": "html",
+      "output": {
+        "generic": [
+          {
+            "title": "Html logo",
+            "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "HyperText Markup Language (HTML) is the set of markup symbols or codes inserted into a file intended for display on the Internet."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": "https://www.w3schools.com/html/html_intro.asp"
+                }
+              }
+            },
+            "message_to_user": "click here to learn HTML !"
+          }
+        ]
+      },
+      "conditions": "#Html",
+      "dialog_node": "node_6_1625771201734",
+      "previous_sibling": "node_6_1625771349848"
+    },
+    {
+      "type": "standard",
+      "title": "C language",
+      "output": {
+        "generic": [
+          {
+            "title": "c++ logo",
+            "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "C++ is commonly used for graphics-heavy software such as games, photo and video editing apps"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": "https://www.w3schools.com/CPP/default.asp"
+                }
+              }
+            },
+            "message_to_user": "click here to learn c++ !"
+          }
+        ]
+      },
+      "conditions": "#data",
+      "dialog_node": "node_6_1625771349848",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "talk",
+  "language": "en",
+  "description": ""
+}
